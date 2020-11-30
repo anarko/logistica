@@ -1,6 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
+from django.template import loader
+
+def index(request):
+    template = loader.get_template('recupero/index.html')
+    context = {}
+    return HttpResponse(template.render(context,request))
 
 def login(request):
     username = request.GET['user']
