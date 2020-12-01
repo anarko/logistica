@@ -18,5 +18,6 @@ from django.urls import path,include
 
 urlpatterns = [
     path('index/', include('recupero.urls')),
+    path('login/', include('recupero.urls')),
     path('admin/', admin.site.urls),
 ]
