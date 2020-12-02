@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.template import loader
 
+import json
+
 def index(request):
     template = loader.get_template('recupero/index.html')
     context = {}
@@ -13,13 +15,13 @@ def logi(request):
         username = request.GET['user']
         password = request.GET['pass']
     except:
-        return HttpResponse("login error")
-        
+        return HttpResponse(json.dumps({'login':'error'}))
+
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request,user)
-        return HttpResponse("login OK")
+        return HttpResponse(json.dumps({'login':'ok'}))
     else:
         # Return an 'invalid login' error message.
-        return HttpResponse("login error")
+        return HttpResponse(json.dumps({'login':'error'}))
 
