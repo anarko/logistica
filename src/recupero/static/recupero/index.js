@@ -1,18 +1,23 @@
-/*
-const btnLogin = document.getElementById('btn-login');
 
-btnLogin.addEventListener('click', () => {
-  var url = '/recupero/login/';
-  var data = {'user': 'anarko','pass':'anarko'};
+const btnLogout = document.getElementById('btn-logout');
+const btnMenu1 = document.getElementById('btn-menu1');
 
-  fetch(url, {
-    method: 'POST', // or 'PUT'
-    body: JSON.stringify(data), // data can be `string` or {object}!
-    headers:{
-      'Content-Type': 'application/json'
-    }
-  }).then(res => res.json())
-  .catch(error => console.error('Error:', error))
-  .then(response => console.log('Success:', response));
+btnLogout.addEventListener('click', () => {    
+  window.location='/recupero/logout/';
+});
+
+
+btnMenu1.addEventListener('click', () => {    
+  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  console.log(csrftoken)
+  const request = new Request(
+      '/recupero/menu1/',
+      {headers: {'X-CSRFToken': csrftoken}}
+  );
+  fetch(request, {
+      method: 'POST',
+      mode: 'same-origin'  // Do not send CSRF token to another domain.
+  }).then(function(response) {
+      
   });
-*/
+});

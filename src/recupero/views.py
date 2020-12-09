@@ -43,3 +43,8 @@ def logout_user(request):
     context = {}
     template = loader.get_template('recupero/login.html')
     return HttpResponse(template.render(context,request))
+
+
+def menu1(request):    
+    
+    return HttpResponse(json.dumps({'cosas':'cositas'})) 
