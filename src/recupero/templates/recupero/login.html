@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static 'recupero/index.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'recupero/styles.css' %}">
+    <title>Logistica Login</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="login-windows">
+            <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <h1>Login</h1>
+            <input type="text" name="user" placeholder="user" id="user">
+            <input type="password" name="pass" placeholder="password" id="pass">
+            <input id="btn-login" type="submit" value='Ingresar'>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>
