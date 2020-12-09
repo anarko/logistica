@@ -8,16 +8,20 @@ btnLogout.addEventListener('click', () => {
 
 
 btnMenu1.addEventListener('click', () => {    
-  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-  console.log(csrftoken)
+  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;  
+  
   const request = new Request(
       '/recupero/menu1/',
       {headers: {'X-CSRFToken': csrftoken}}
   );
+
   fetch(request, {
       method: 'POST',
       mode: 'same-origin'  // Do not send CSRF token to another domain.
-  }).then(function(response) {
-      
-  });
+  })
+    .then(response => response.json())
+    .then( function ( data )  {
+      document.getElementById('container').innerHTML = data.cosas;
+    } );
+
 });
