@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.template import loader
+from .forms import UploadFileForm
 
 import json
 
@@ -45,5 +46,14 @@ def logout_user(request):
     return HttpResponse(template.render(context,request))
 
 
-def menu1(request):
-    return HttpResponse(json.dumps({'cosas':'cositas'})) 
+def upload_files_form(request):
+
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            pass
+            #handle_uploaded_file(request.FILES['file'])
+            
+    else:
+        form = UploadFileForm() 
+    return HttpResponse(json.dumps({'form': form})) 

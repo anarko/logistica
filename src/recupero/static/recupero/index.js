@@ -11,7 +11,7 @@ btnMenu1.addEventListener('click', () => {
   const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;  
   
   const request = new Request(
-      '/recupero/menu1/',
+      '/recupero/upload_files_form/',
       {headers: {'X-CSRFToken': csrftoken}}
   );
 
