@@ -16,12 +16,12 @@ btnMenu1.addEventListener('click', () => {
   );
 
   fetch(request, {
-      method: 'POST',
+      method: 'GET',
       mode: 'same-origin'  // Do not send CSRF token to another domain.
   })
     .then(response => response.json())
     .then( function ( data )  {
-      document.getElementById('container').innerHTML = data.cosas;
+      document.getElementById('container').innerHTML = data.form;
     } );
 
 });

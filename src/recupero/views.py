@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.template import loader
 from .forms import UploadFileForm
-
+from .form_functions import handle_uploaded_file
 import json
 
 def index(request):    
@@ -16,7 +16,6 @@ def index(request):
         context = {}
         return HttpResponse(template.render(context,request))
     
-
 def login_user(request):
     try:
         username = request.POST['user']
@@ -51,9 +50,21 @@ def upload_files_form(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            pass
-            #handle_uploaded_file(request.FILES['file'])
+            context = {'mensaje':"Archivo subido"}
+            handle_uploaded_file(request.FILES['file'])
+        else:
+            context = {'mensaje':"Archivo NO subido"}
+        
+        template = loader.get_template('recupero/index.html')
+        return HttpResponse(template.render(context,request))
+        
             
     else:
         form = UploadFileForm() 
-    return HttpResponse(json.dumps({'form': form})) 
+        template = loader.get_template('recupero/upload.html')
+        context = {'form': form}
+        return HttpResponse(json.dumps({'form': template.render(context,request)}))
+    
+    
+
+    
