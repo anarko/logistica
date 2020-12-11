@@ -37,7 +37,6 @@ class Equipo(models.Model):
     email = models.CharField(max_length=255,default=None)
     proveedor = models.CharField(max_length=255,default=None)
     
-    
 class Llamadas(models.Model):
     author = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.DO_NOTHING)
     equipo = models.ForeignKey(Equipo, on_delete=models.PROTECT)
@@ -54,3 +53,23 @@ class ResultadoLlamada(models.Model):
     n2 = models.CharField(max_length=255,default=None)
     n3 = models.CharField(max_length=255,default=None)
     n4 = models.CharField(max_length=255,default=None)
+
+17: {"N1":"Contactado", "N2":"Acepta Retiro","N3":"Cita Coordinada", "N4":","}
+20:{"N1":"Contactado","N2":"Acepta Retiro","N3":"Cita Coordinada","N4":"Equipo Recuperado"}
+13:{"N1":"Contactado","N2":"Referencia Incorrecta","N3":"N/A","N4":""}
+9:{"N1":"Contactado","N2":"Gestionado","N3":"Equipo Devuelto a" écnico","N4":""}
+11:{"N1":"Contactado","N2":"Gestionado","N3":"Equipo Devuelto en Oficina Comercial","N4":""}
+5:{"N1":"Contactado","N2":","No"Acepta"Retiro","N3":"Desconoce Baja Voluntaria","N4":""}
+12:{"N1":"Contactado","N2":"No Acepta Retiro","N3":"Entregará a Técnico o en Oficina","N4":""}
+"US":{"N1":"Contactado","N2":"No Acepta Retiro","N3":"Equipo en uso con Baja","N4":""}
+10:{"N1":"Contactado","N2":"No"Acepta Retiro","N3":"No lo quiere devolver","N4":""}
+3:{"N1":"Contactado","N2":"No"Posee los Equipos","N3":"Los dejó en domicilio Anterior","N4":""}
+15:{"N1":"Contactado","N2":"No"Posee"los"Equipos","N3":"Los Perdió","N4":""}
+"VLL":{"N1":"Contactado","N2":"Volver"a"Llamar","N3":"No"puede"atender"el"llamado","N4":""}
+"CO":{"N1":"Contactado","N2":"Pospone"por"covid","N3":",""N4":""}
+"TF":{"N1":"Contactado","N2":"Titular"Fallecio","N3":",""N4":""}
+"CA":{"N1":"No"Contactado","N2":"Contestador"Automático","N3":"N/A","N4":""}
+"ND":{"N1":"No"Contactado","N2":"Corta"Llamado","N3":"N/A","N4":","
+"TI":{"N1":"No"Contactado","N2":"Error"en"Base","N3":"Teléfono"Incorrecto","N4":""}
+"NC":{"N1":"No"Contactado","N2":"No"Contesta","N3":"N/A","N4":""}
+"OC":{"N1":"No"Contactado","N2":"Ocupado","N3":"N/A","N4":""}
