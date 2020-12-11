@@ -16,7 +16,7 @@ btnMenu1.addEventListener('click', () => {
   );
 
   fetch(request, {
-      method: 'GET',
+      method: 'POST',
       mode: 'same-origin'  // Do not send CSRF token to another domain.
   })
     .then(response => response.json())

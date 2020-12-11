@@ -48,23 +48,22 @@ def logout_user(request):
 def upload_files_form(request):
 
     if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            context = {'mensaje':"Archivo subido"}
-            handle_uploaded_file(request.FILES['file'])
-        else:
-            context = {'mensaje':"Archivo NO subido"}
-        
-        template = loader.get_template('recupero/index.html')
-        return HttpResponse(template.render(context,request))
-        
+        if request.FILES:
+            form = UploadFileForm(request.POST, request.FILES)
+            if form.is_valid():
+                context = {'mensaje':"Archivo subido"}
+                handle_uploaded_file(request.FILES['file'])
+            else:
+                context = {'mensaje':"Archivo NO subido"}
             
-    else:
-        form = UploadFileForm() 
-        template = loader.get_template('recupero/upload.html')
-        context = {'form': form}
-        return HttpResponse(json.dumps({'form': template.render(context,request)}))
+            template = loader.get_template('recupero/index.html')
+            return HttpResponse(template.render(context,request))
+        else:
+            form = UploadFileForm() 
+            template = loader.get_template('recupero/upload.html')
+            context = {'form': form}
+            return HttpResponse(json.dumps({'form': template.render(context,request)}))
     
-    
+    return(index(request))
 
     
