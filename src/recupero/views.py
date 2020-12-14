@@ -66,4 +66,6 @@ def upload_files_form(request):
     
     return(index(request))
 
-    
+def get_clientes_sin_llamar(request):
+    clientes = {}
+    return HttpResponse(json.dumps({'clientes': clientes}))
