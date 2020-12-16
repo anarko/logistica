@@ -66,6 +66,8 @@ def upload_files_form(request):
     
     return(index(request))
 
-def get_clientes_sin_llamar(request):
-    clientes = {}
-    return HttpResponse(json.dumps({'clientes': clientes}))
+def get_clientes(request):
+    context = {}
+    template = loader.get_template('recupero/llamadas.html')
+
+    return HttpResponse(json.dumps({'html': template.render(context,request)}))
